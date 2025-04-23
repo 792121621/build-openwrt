@@ -275,10 +275,10 @@ jobs:
           cd openwrt/
           ${GITHUB_WORKSPACE}/${DIY_P2_SH}
           # 应用自定义配置
-          if [[ -e "${CONFIG_FILE}" ]]; then
-              echo "成功: 自定义配置文件 ${CONFIG_FILE} 存在！！"
+          if [[ -e "${GITHUB_WORKSPACE}/${DIY_P2_SH}" ]]; then
+              echo "成功: 自定义配置文件 ${GITHUB_WORKSPACE}/${DIY_P2_SH} 存在！！"
           else
-              echo "警告: 自定义配置文件 ${CONFIG_FILE} 不存在，跳过"
+              echo "警告: 自定义配置文件 ${GITHUB_WORKSPACE}/${DIY_P2_SH} 不存在，跳过"
           fi
 
       - name: Download package
