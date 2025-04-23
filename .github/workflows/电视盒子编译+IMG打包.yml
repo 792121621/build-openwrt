@@ -256,10 +256,25 @@ jobs:
 
       - name: Load custom feeds
         run: |
+         if [[ -e "${FEEDS_CONF}" ]]; then
+              echo "成功: custom feeds文件 ${FEEDS_CONF} 存在！！"
+          else
+              echo "警告: custom feeds文件 ${FEEDS_CONF} 不存在，跳过"
+          fi
           [[ -f "${FEEDS_CONF}" ]] && cp -f ${FEEDS_CONF} openwrt/feeds.conf.default
           chmod +x ${DIY_P1_SH}
+                   if [[ -e "${FEEDS_CONF}" ]]; then
+              echo "成功: custom feeds文件 ${FEEDS_CONF} 存在！！"
+          else
+              echo "警告: custom feeds文件 ${FEEDS_CONF} 不存在，跳过"
+          fi
           cd openwrt/
           ${GITHUB_WORKSPACE}/${DIY_P1_SH}
+                   if [[ -e "${FEEDS_CONF}" ]]; then
+              echo "成功: custom feeds文件 ${FEEDS_CONF} 存在！！"
+          else
+              echo "警告: custom feeds文件 ${FEEDS_CONF} 不存在，跳过"
+          fi
 
       - name: Update feeds
         run: cd openwrt/ && ./scripts/feeds update -a
